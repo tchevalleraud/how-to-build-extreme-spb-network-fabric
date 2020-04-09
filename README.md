@@ -23,16 +23,16 @@ This guide will cover the following topics:
 
 ### VSP Configuration
 
-| Name        | MGMT Ip         | Area      |   System ID    | SPBm Instance | Nick-Name      | B-VLAN     |
-| :---------- | :-------------: | :-------: | :------------: | :-----------: | :------------: | :--------: |
-| RTR-CORE-01 | 192.168.0.201   | 49.0001   | 020c.0750.0001 | 1             | c.75.01        | 4051, 4052 |
-| RTR-CORE-02 | 192.168.0.202   | 49.0001   | 020c.0750.0002 | 1             | c.75.02        | 4051, 4052 |
-| RTR-CORE-03 | 192.168.0.203   | 49.0001   | 020c.0750.0003 | 1             | c.75.03        | 4051, 4052 |
-| RTR-CORE-04 | 192.168.0.204   | 49.0001   | 020c.0750.0004 | 1             | c.75.04        | 4051, 4052 |
-| SW-ACCESS-1 | 192.168.0.205   | 49.0001   | 020a.0750.0001 | 1             | a.75.01        | 4051, 4052 |
-| SW-ACCESS-2 | 192.168.0.206   | 49.0001   | 020a.0750.0002 | 1             | a.75.01        | 4051, 4052 |
-| SW-ACCESS-3 | 192.168.0.207   | 49.0001   | 020a.0750.0003 | 1             | a.75.01        | 4051, 4052 |
-| SW-ACCESS-4 | 192.168.0.208   | 49.0001   | 020a.0750.0004 | 1             | a.75.01        | 4051, 4052 |
+| Name        | MGMT Ip         | Area      |   System ID    | SPBm Instance | Nick-Name      | B-VLAN     | Primary |
+| :---------- | :-------------: | :-------: | :------------: | :-----------: | :------------: | :--------: | :-----: |
+| RTR-CORE-01 | 192.168.0.201   | 49.0001   | 020c.0750.0001 | 1             | c.75.01        | 4051, 4052 | 4051    |
+| RTR-CORE-02 | 192.168.0.202   | 49.0001   | 020c.0750.0002 | 1             | c.75.02        | 4051, 4052 | 4051    |
+| RTR-CORE-03 | 192.168.0.203   | 49.0001   | 020c.0750.0003 | 1             | c.75.03        | 4051, 4052 | 4051    |
+| RTR-CORE-04 | 192.168.0.204   | 49.0001   | 020c.0750.0004 | 1             | c.75.04        | 4051, 4052 | 4051    |
+| SW-ACCESS-1 | 192.168.0.205   | 49.0001   | 020a.0750.0001 | 1             | a.75.01        | 4051, 4052 | 4051    |
+| SW-ACCESS-2 | 192.168.0.206   | 49.0001   | 020a.0750.0002 | 1             | a.75.01        | 4051, 4052 | 4051    |
+| SW-ACCESS-3 | 192.168.0.207   | 49.0001   | 020a.0750.0003 | 1             | a.75.01        | 4051, 4052 | 4051    |
+| SW-ACCESS-4 | 192.168.0.208   | 49.0001   | 020a.0750.0004 | 1             | a.75.01        | 4051, 4052 | 4051    |
 
 ### Client configuration
 | Client name | VLAN ID | IP Address |
@@ -45,3 +45,19 @@ This guide will cover the following topics:
 | Client 6    | 106     | 10.0.106.6 |
 | Client 7    | 107     | 10.0.107.7 |
 | Client 8    | 108     | 10.0.108.8 |
+
+### Template configuration
+
+``` rconsole
+TEST (config)# enable
+TEST (config)# configuration terminal
+TEST (config)# spbm
+TEST (config)# router isis
+TEST (config)# system-id <system_id>
+TEST (config)# manual-area <area>
+TEST (config)# spbm <spbm_instance>
+TEST (config)# spbm <spbm_instance> nick-name <nick-name>
+TEST (config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
+TEST (config)# exit
+TEST (config)# router isis enable
+``` 
