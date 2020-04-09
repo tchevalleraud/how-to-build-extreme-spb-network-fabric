@@ -48,16 +48,16 @@ This guide will cover the following topics:
 
 ### Template configuration
 
-``` rconsole
-TEST (config)# enable
-TEST (config)# configuration terminal
-TEST (config)# spbm
-TEST (config)# router isis
-TEST (config)# system-id <system_id>
-TEST (config)# manual-area <area>
-TEST (config)# spbm <spbm_instance>
-TEST (config)# spbm <spbm_instance> nick-name <nick-name>
-TEST (config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
-TEST (config)# exit
-TEST (config)# router isis enable
-``` 
+<pre style='color:#d1d1d1;background:#000000;'>
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> enable
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> configuration terminal
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> spbm
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> router isis
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> system-id <span style='color:#c00000;'>$$_system_id_$$</span>
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> manual-area <span style='color:#c00000;'>$$_area_$$</span>
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> spbm <span style='color:#c00000;'>$$_spbm_instance_$$</span>
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> spbm <span style='color:#c00000;'>$$_spbm_instance_$$</span> nick-name <span style='color:#c00000;'>$$_nick-name_$$</span>
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> spbm <span style='color:#c00000;'>$$_spbm_instance_$$</span> b-vid <span style='color:#c00000;'>$$_b-vlan_$$</span> primary <span style='color:#c00000;'>$$_primary_$$</span>
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> exit
+<span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> router isis enable
+</pre>
