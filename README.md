@@ -61,3 +61,19 @@ vVOSS1(config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
 vVOSS1(config)# exit
 vVOSS1(config)# router isis enable
 ```
+
+### Configuration example for ```RTR-CORE-01```
+
+``` properties
+vVOSS1(config)# enable
+vVOSS1(config)# configuration terminal
+vVOSS1(config)# spbm
+vVOSS1(config)# router isis
+vVOSS1(config)# system-id 020c.0750.0001
+vVOSS1(config)# manual-area 49.0001
+vVOSS1(config)# spbm 1
+vVOSS1(config)# spbm 1 nick-name c.75.01
+vVOSS1(config)# spbm 1 b-vid 4051,4052 primary 4051
+vVOSS1(config)# exit
+vVOSS1(config)# router isis enable
+```
