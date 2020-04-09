@@ -48,6 +48,8 @@ This guide will cover the following topics:
 
 ### Template configuration
 
+<span style="color: #FF0000">Test</span>
+
 <pre style='color:#d1d1d1;background:#000000;'>
 <span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> enable
 <span style='color:#00a800;'>VSP-1100:1</span><span style='color:#b060b0;'>(config)#</span> configuration terminal
