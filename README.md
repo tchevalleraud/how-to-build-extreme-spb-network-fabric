@@ -48,21 +48,16 @@ This guide will cover the following topics:
 
 ### Template configuration
 
-``` python
-TEST (config)# enable
-TEST (config)# configuration terminal
-TEST (config)# spbm
-TEST (config)# router isis
-TEST (config)# system-id <system_id>
-TEST (config)# manual-area <area>
-TEST (config)# spbm <spbm_instance>
-TEST (config)# spbm <spbm_instance> nick-name <nick-name>
-TEST (config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
-TEST (config)# exit
-TEST (config)# router isis enable
-``` 
-
-``` python
-VSP-1100:1(config)# enable
-VSP-1100:1(config)# disable
+``` properties
+vVOSS1(config)# enable
+vVOSS1(config)# configuration terminal
+vVOSS1(config)# spbm
+vVOSS1(config)# router isis
+vVOSS1(config)# system-id <system_id>
+vVOSS1(config)# manual-area <area>
+vVOSS1(config)# spbm <spbm_instance>
+vVOSS1(config)# spbm <spbm_instance> nick-name <nick-name>
+vVOSS1(config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
+vVOSS1(config)# exit
+vVOSS1(config)# router isis enable
 ```
