@@ -77,3 +77,29 @@ vVOSS1(config)# spbm 1 b-vid 4051,4052 primary 4051
 vVOSS1(config)# exit
 vVOSS1(config)# router isis enable
 ```
+
+## NNI Interface configuration
+
+### Template configuration
+
+``` properties
+vVOSS1(config)# interface gigabitEthernet <interface>
+vVOSS1(config)# isis
+vVOSS1(config)# isis spbm <spbm_instance>
+vVOSS1(config)# isis enable
+vVOSS1(config)# no spanning-tree mstp force-port-state enable
+vVOSS1(config)# no shutdown
+vVOSS1(config)# exit
+```
+
+### Configuration example for ```RTR-CORE-01```
+
+``` properties
+vVOSS1(config)# interface gigabitEthernet 1/1
+vVOSS1(config)# isis
+vVOSS1(config)# isis spbm 1
+vVOSS1(config)# isis enable
+vVOSS1(config)# no spanning-tree mstp force-port-state enable
+vVOSS1(config)# no shutdown
+vVOSS1(config)# exit
+```
