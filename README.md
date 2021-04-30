@@ -26,7 +26,7 @@ This guide will cover the following topics:
 
 | Name         | MGMT Ip       | Area    |   System ID    | Instance | Nick-Name | B-VLAN    | Primary | File                                  |
 | :----------- | :-----------: | :-----: | :------------: | :------: | :-------: | :-------: | :-----: | :-----------------------------------: |
-| RTR-CORE-01  | 192.168.0.201 | 49.0001 | 020c.0750.0001 | 1        | c.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS1.cfg) |
+| RTR-CORE-01  | 192.168.0.201 | 49.0001 | 020c.0750.0001 | 1        | c.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/RTR-CORE-01.cfg) |
 | RTR-CORE-02  | 192.168.0.202 | 49.0001 | 020c.0750.0002 | 1        | c.75.02   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS2.cfg) |
 | RTR-CORE-03  | 192.168.0.203 | 49.0001 | 020c.0750.0003 | 1        | c.75.03   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS3.cfg) |
 | RTR-CORE-04  | 192.168.0.204 | 49.0001 | 020c.0750.0004 | 1        | c.75.04   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS4.cfg) |
@@ -38,39 +38,39 @@ This guide will cover the following topics:
 ### Template configuration
 
 ``` properties
-vVOSS1(config)# enable
-vVOSS1(config)# configuration terminal
-vVOSS1(config)# sys name <name>
-vVOSS1(config)# spbm
-vVOSS1(config)# router isis
-vVOSS1(config)# system-id <system_id>
-vVOSS1(config)# manual-area <area>
-vVOSS1(config)# spbm <spbm_instance>
-vVOSS1(config)# spbm <spbm_instance> nick-name <nick-name>
-vVOSS1(config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
-vVOSS1(config)# exit
-vVOSS1(config)# vlan create <b-vlan1> name BVLAN1 type spbm-bvlan
-vVOSS1(config)# vlan create <b-vlan2> name BVLAN2 type spbm-bvlan
-vVOSS1(config)# router isis enable
+RTR-CORE-01(config)# enable
+RTR-CORE-01(config)# configuration terminal
+RTR-CORE-01(config)# sys name <name>
+RTR-CORE-01(config)# spbm
+RTR-CORE-01(config)# router isis
+RTR-CORE-01(config)# system-id <system_id>
+RTR-CORE-01(config)# manual-area <area>
+RTR-CORE-01(config)# spbm <spbm_instance>
+RTR-CORE-01(config)# spbm <spbm_instance> nick-name <nick-name>
+RTR-CORE-01(config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
+RTR-CORE-01(config)# exit
+RTR-CORE-01(config)# vlan create <b-vlan1> name BVLAN1 type spbm-bvlan
+RTR-CORE-01(config)# vlan create <b-vlan2> name BVLAN2 type spbm-bvlan
+RTR-CORE-01(config)# router isis enable
 ```
 
-### Configuration example for ```vVOSS1```
+### Configuration example for ```RTR-CORE-01```
 
 ``` properties
-vVOSS1(config)# enable
-vVOSS1(config)# configuration terminal
-vVOSS1(config)# sys name RTR-CORE-01
-vVOSS1(config)# spbm
-vVOSS1(config)# router isis
-vVOSS1(config)# system-id 020c.0750.0001
-vVOSS1(config)# manual-area 49.0001
-vVOSS1(config)# spbm 1
-vVOSS1(config)# spbm 1 nick-name c.75.01
-vVOSS1(config)# spbm 1 b-vid 4051,4052 primary 4051
-vVOSS1(config)# exit
-vVOSS1(config)# vlan create 4051 name BVLAN1 type spbm-bvlan
-vVOSS1(config)# vlan create 4052 name BVLAN2 type spbm-bvlan
-vVOSS1(config)# router isis enable
+RTR-CORE-01(config)# enable
+RTR-CORE-01(config)# configuration terminal
+RTR-CORE-01(config)# sys name RTR-CORE-01
+RTR-CORE-01(config)# spbm
+RTR-CORE-01(config)# router isis
+RTR-CORE-01(config)# system-id 020c.0750.0001
+RTR-CORE-01(config)# manual-area 49.0001
+RTR-CORE-01(config)# spbm 1
+RTR-CORE-01(config)# spbm 1 nick-name c.75.01
+RTR-CORE-01(config)# spbm 1 b-vid 4051,4052 primary 4051
+RTR-CORE-01(config)# exit
+RTR-CORE-01(config)# vlan create 4051 name BVLAN1 type spbm-bvlan
+RTR-CORE-01(config)# vlan create 4052 name BVLAN2 type spbm-bvlan
+RTR-CORE-01(config)# router isis enable
 ```
 
 ## NNI Interface configuration
@@ -78,28 +78,54 @@ vVOSS1(config)# router isis enable
 ### Template configuration
 
 ``` properties
-vVOSS1(config)# interface gigabitEthernet <interface>
-vVOSS1(config)# isis
-vVOSS1(config)# isis spbm <spbm_instance>
-vVOSS1(config)# isis enable
-vVOSS1(config)# no spanning-tree mstp force-port-state enable
-vVOSS1(config)# y
-vVOSS1(config)# no shutdown
-vVOSS1(config)# exit
+RTR-CORE-01(config)# interface gigabitEthernet <interface>
+RTR-CORE-01(config)# isis
+RTR-CORE-01(config)# isis spbm <spbm_instance>
+RTR-CORE-01(config)# isis enable
+RTR-CORE-01(config)# no spanning-tree mstp force-port-state enable
+RTR-CORE-01(config)# y
+RTR-CORE-01(config)# no shutdown
+RTR-CORE-01(config)# exit
 ```
 
-### Configuration example for ```vVOSS1```
+### Configuration example for ```RTR-CORE-01```
 
 ``` properties
-vVOSS1(config)# interface gigabitEthernet 1/1
-vVOSS1(config)# isis
-vVOSS1(config)# isis spbm 1
-vVOSS1(config)# isis enable
-vVOSS1(config)# no spanning-tree mstp force-port-state enable
-vVOSS1(config)# y
-vVOSS1(config)# no shutdown
-vVOSS1(config)# exit
+RTR-CORE-01(config)# interface gigabitEthernet 1/1
+RTR-CORE-01(config)# isis
+RTR-CORE-01(config)# isis spbm 1
+RTR-CORE-01(config)# isis enable
+RTR-CORE-01(config)# no spanning-tree mstp force-port-state enable
+RTR-CORE-01(config)# y
+RTR-CORE-01(config)# no shutdown
+RTR-CORE-01(config)# exit
 ```
+
+## How to control configuration
+
+It is possible to have several level of troubleshooting
+
+The following commands are used to check the correct configuration on the equipment :
+
+``` properties
+RTR-CORE-01(config)# show isis
+```
+
+[![LAB01_CTRL01](./img/lab01_ctrl01.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric)
+
+``` properties
+RTR-CORE-01(config)# show isis interface
+```
+
+[![LAB01_CTRL02](./img/lab01_ctrl02.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric)
+
+But it is also possible to have a set of information on the other members of the fabric, it is enough to execute the following commands from any equipment :
+
+``` properties
+RTR-CORE-01(config)# show isis spbm nick-name
+```
+
+[![LAB01_CTRL03](./img/lab01_ctrl03.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric)
 
 # Establishment of a level 2 service
 
