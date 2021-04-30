@@ -12,6 +12,7 @@ This guide will cover the following topics:
 - Implementation of ISIS and SPBm
 - Establishment of a level 2 service
 - Implementation of routing
+- Implementation of VRF
 
 # Implementation of the fabric
 
@@ -23,16 +24,16 @@ This guide will cover the following topics:
 
 ### VSP Configuration
 
-| Name        | MGMT Ip         | Area      |   System ID    | SPBm Instance | Nick-Name      | B-VLAN     | Primary |
-| :---------- | :-------------: | :-------: | :------------: | :-----------: | :------------: | :--------: | :-----: |
-| RTR-CORE-01 | 192.168.0.201   | 49.0001   | 020c.0750.0001 | 1             | c.75.01        | 4051, 4052 | 4051    |
-| RTR-CORE-02 | 192.168.0.202   | 49.0001   | 020c.0750.0002 | 1             | c.75.02        | 4051, 4052 | 4051    |
-| RTR-CORE-03 | 192.168.0.203   | 49.0001   | 020c.0750.0003 | 1             | c.75.03        | 4051, 4052 | 4051    |
-| RTR-CORE-04 | 192.168.0.204   | 49.0001   | 020c.0750.0004 | 1             | c.75.04        | 4051, 4052 | 4051    |
-| SW-ACCESS-1 | 192.168.0.205   | 49.0001   | 020a.0750.0001 | 1             | a.75.01        | 4051, 4052 | 4051    |
-| SW-ACCESS-2 | 192.168.0.206   | 49.0001   | 020a.0750.0002 | 1             | a.75.01        | 4051, 4052 | 4051    |
-| SW-ACCESS-3 | 192.168.0.207   | 49.0001   | 020a.0750.0003 | 1             | a.75.01        | 4051, 4052 | 4051    |
-| SW-ACCESS-4 | 192.168.0.208   | 49.0001   | 020a.0750.0004 | 1             | a.75.01        | 4051, 4052 | 4051    |
+| Name   | MGMT Ip       | Area    |   System ID    | Instance | Nick-Name | B-VLAN    | Primary | File                                  |
+| :----- | :-----------: | :-----: | :------------: | :------: | :-------: | :-------: | :-----: | :-----------------------------------: |
+| vVOSS1 | 192.168.0.201 | 49.0001 | 020c.0750.0001 | 1        | c.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS1.cfg) |
+| vVOSS2 | 192.168.0.202 | 49.0001 | 020c.0750.0002 | 1        | c.75.02   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS2.cfg) |
+| vVOSS3 | 192.168.0.203 | 49.0001 | 020c.0750.0003 | 1        | c.75.03   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS3.cfg) |
+| vVOSS4 | 192.168.0.204 | 49.0001 | 020c.0750.0004 | 1        | c.75.04   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS4.cfg) |
+| vVOSS5 | 192.168.0.205 | 49.0001 | 020a.0750.0001 | 1        | a.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS5.cfg) |
+| vVOSS6 | 192.168.0.206 | 49.0001 | 020a.0750.0002 | 1        | a.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS6.cfg) |
+| vVOSS7 | 192.168.0.207 | 49.0001 | 020a.0750.0003 | 1        | a.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS7.cfg) |
+| vVOSS8 | 192.168.0.208 | 49.0001 | 020a.0750.0004 | 1        | a.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS8.cfg) |
 
 ### Client configuration
 | Client name | VLAN ID | IP Address |
@@ -51,6 +52,7 @@ This guide will cover the following topics:
 ``` properties
 vVOSS1(config)# enable
 vVOSS1(config)# configuration terminal
+vVOSS1(config)# sys name <name>
 vVOSS1(config)# spbm
 vVOSS1(config)# router isis
 vVOSS1(config)# system-id <system_id>
@@ -59,14 +61,17 @@ vVOSS1(config)# spbm <spbm_instance>
 vVOSS1(config)# spbm <spbm_instance> nick-name <nick-name>
 vVOSS1(config)# spbm <spbm_instance> b-vid <b-vlan> primary <primary>
 vVOSS1(config)# exit
+vVOSS1(config)# vlan create <b-vlan1> name BVLAN1 type spbm-bvlan
+vVOSS1(config)# vlan create <b-vlan2> name BVLAN2 type spbm-bvlan
 vVOSS1(config)# router isis enable
 ```
 
-### Configuration example for ```RTR-CORE-01```
+### Configuration example for ```vVOSS1```
 
 ``` properties
 vVOSS1(config)# enable
 vVOSS1(config)# configuration terminal
+vVOSS1(config)# sys name RTR-CORE-01
 vVOSS1(config)# spbm
 vVOSS1(config)# router isis
 vVOSS1(config)# system-id 020c.0750.0001
@@ -75,6 +80,8 @@ vVOSS1(config)# spbm 1
 vVOSS1(config)# spbm 1 nick-name c.75.01
 vVOSS1(config)# spbm 1 b-vid 4051,4052 primary 4051
 vVOSS1(config)# exit
+vVOSS1(config)# vlan create 4051 name BVLAN1 type spbm-bvlan
+vVOSS1(config)# vlan create 4052 name BVLAN2 type spbm-bvlan
 vVOSS1(config)# router isis enable
 ```
 
@@ -92,7 +99,7 @@ vVOSS1(config)# no shutdown
 vVOSS1(config)# exit
 ```
 
-### Configuration example for ```RTR-CORE-01```
+### Configuration example for ```vVOSS2```
 
 ``` properties
 vVOSS1(config)# interface gigabitEthernet 1/1
