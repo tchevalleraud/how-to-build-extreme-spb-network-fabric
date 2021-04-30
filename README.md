@@ -125,7 +125,9 @@ But it is also possible to have a set of information on the other members of the
 RTR-CORE-01(config)# show isis spbm nick-name
 ```
 
-[![LAB01_CTRL03](./img/lab01_ctrl03.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric)
+| |
+| :---: |
+| [![LAB01_CTRL03](./img/lab01_ctrl03.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric) |
 
 # Establishment of a level 2 service
 
