@@ -35,18 +35,6 @@ This guide will cover the following topics:
 | SW-ACCESS-03 | 192.168.0.207 | 49.0001 | 020a.0750.0003 | 1        | a.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS7.cfg) |
 | SW-ACCESS-04 | 192.168.0.208 | 49.0001 | 020a.0750.0004 | 1        | a.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS8.cfg) |
 
-### Client configuration
-| Client name | VLAN ID | IP Address |
-| :---------- | :-----: | :--------: |
-| Client 1    | 101     | 10.0.101.1 |
-| Client 2    | 102     | 10.0.102.2 |
-| Client 3    | 101     | 10.0.101.3 |
-| Client 4    | 104     | 10.0.104.4 |
-| Client 5    | 105     | 10.0.105.5 |
-| Client 6    | 106     | 10.0.106.6 |
-| Client 7    | 107     | 10.0.107.7 |
-| Client 8    | 108     | 10.0.108.8 |
-
 ### Template configuration
 
 ``` properties
@@ -95,11 +83,12 @@ vVOSS1(config)# isis
 vVOSS1(config)# isis spbm <spbm_instance>
 vVOSS1(config)# isis enable
 vVOSS1(config)# no spanning-tree mstp force-port-state enable
+vVOSS1(config)# y
 vVOSS1(config)# no shutdown
 vVOSS1(config)# exit
 ```
 
-### Configuration example for ```vVOSS2```
+### Configuration example for ```vVOSS1```
 
 ``` properties
 vVOSS1(config)# interface gigabitEthernet 1/1
@@ -107,6 +96,27 @@ vVOSS1(config)# isis
 vVOSS1(config)# isis spbm 1
 vVOSS1(config)# isis enable
 vVOSS1(config)# no spanning-tree mstp force-port-state enable
+vVOSS1(config)# y
 vVOSS1(config)# no shutdown
 vVOSS1(config)# exit
 ```
+
+# Establishment of a level 2 service
+
+## Topology overview
+
+## Basic configuration
+
+## UNI Interface configuration
+
+# Implementation of routing
+
+## Topology overview
+
+## Basic configuration
+
+# Implementation of VRF
+
+## Topology overview
+
+## Basic configuration
