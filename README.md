@@ -135,11 +135,64 @@ RTR-CORE-01(config)# show isis spbm nick-name
 
 ## Basic configuration
 
-| vPC | VLAN | I-SID    | IP | Instance    |
-| :-- | :--: | :------: | :--------------: |
-| PC1 | 100  | 12000100 | 192.168.100.1/24 |
+| vPC | VLAN | VLAN Name | I-SID    | IP               |
+| :-: | :--: | :-------: | :------: | :--------------- |
+| PC1 | 101  |           | 12000101 | 192.168.101.1/24 |
+| PC2 | 102  |           | 12000102 | 192.168.102.2/24 |
+| PC3 | 101  |           | 12000101 | 192.168.101.3/24 |
+| PC4 | 102  |           | 12000102 | 192.168.102.4/24 |
+| PC5 | 103  |           | 12000103 | 192.168.103.5/24 |
+| PC6 | 104  |           | 12000104 | 192.168.104.6/24 |
+| PC7 | 103  |           | 12000103 | 192.168.103.7/24 |
+| PC8 | 104  |           | 12000104 | 192.168.104.8/24 |
 
 ## UNI Interface configuration
+
+### Configure SW-ACCESS-01 Node
+
+``` properties
+SW-ACCESS-01(config)# vlan create 101 name VLAN101 type port-mstprstp 1
+SW-ACCESS-01(config)# vlan create 102 name VLAN102 type port-mstprstp 1
+SW-ACCESS-01(config)# vlan i-sid 101 12000101
+SW-ACCESS-01(config)# vlan i-sid 102 12000102
+```
+
+``` properties
+SW-ACCESS-01(config)# vlan members 101 1/3
+SW-ACCESS-01(config)# vlan members 102 1/4
+```
+
+``` properties
+SW-ACCESS-01(config)# interface gigabitEthernet 1/3-1/4
+SW-ACCESS-01(config-if)# no spanning-tree mstp force-port-state enable
+SW-ACCESS-01(config-if)# y
+SW-ACCESS-01(config-if)# no shutdown
+```
+
+### Configure SW-ACCESS-02 Node
+
+``` properties
+SW-ACCESS-02(config)# vlan create 101 name VLAN101 type port-mstprstp 1
+SW-ACCESS-02(config)# vlan create 102 name VLAN102 type port-mstprstp 1
+SW-ACCESS-02(config)# vlan i-sid 101 12000101
+SW-ACCESS-02(config)# vlan i-sid 102 12000102
+```
+
+``` properties
+SW-ACCESS-02(config)# vlan members 101 1/3
+SW-ACCESS-02(config)# vlan members 102 1/4
+```
+
+``` properties
+SW-ACCESS-02(config)# interface gigabitEthernet 1/3-1/4
+SW-ACCESS-02(config-if)# no spanning-tree mstp force-port-state enable
+SW-ACCESS-02(config-if)# y
+SW-ACCESS-02(config-if)# no shutdown
+```
+
+### Test
+
+[![LAB02_CTRL01](./img/lab02_ctrl01.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric)
 
 # Implementation of routing
 
