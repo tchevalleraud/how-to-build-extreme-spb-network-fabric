@@ -24,8 +24,8 @@ This guide will cover the following topics:
 
 ### VSP Configuration
 
-| Name         | MGMT Ip       | Area    |   System ID    | Instance | Nick-Name | B-VLAN    | Primary | File                                  |
-| :----------- | :-----------: | :-----: | :------------: | :------: | :-------: | :-------: | :-----: | :-----------------------------------: |
+| Name         | MGMT Ip       | Area    |   System ID    | Instance | Nick-Name | B-VLAN    | Primary | File                                       |
+| :----------- | :-----------: | :-----: | :------------: | :------: | :-------: | :-------: | :-----: | :----------------------------------------: |
 | RTR-CORE-01  | 192.168.0.201 | 49.0001 | 020c.0750.0001 | 1        | c.75.01   | 4051,4052 | 4051    | [config.cfg](config/LAB01/RTR-CORE-01.cfg) |
 | RTR-CORE-02  | 192.168.0.202 | 49.0001 | 020c.0750.0002 | 1        | c.75.02   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS2.cfg) |
 | RTR-CORE-03  | 192.168.0.203 | 49.0001 | 020c.0750.0003 | 1        | c.75.03   | 4051,4052 | 4051    | [config.cfg](config/LAB01/vVOSS3.cfg) |
@@ -131,7 +131,13 @@ RTR-CORE-01(config)# show isis spbm nick-name
 
 ## Topology overview
 
+[![Topology_L2](./img/topology_l2.png)](https://github.com/tchevalleraud/how-to-build-extreme-spb-network-fabric)
+
 ## Basic configuration
+
+| vPC | VLAN | I-SID    | IP | Instance    |
+| :-- | :--: | :------: | :--------------: |
+| PC1 | 100  | 12000100 | 192.168.100.1/24 |
 
 ## UNI Interface configuration
 
